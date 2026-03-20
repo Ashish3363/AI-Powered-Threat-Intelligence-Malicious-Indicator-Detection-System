@@ -1,5 +1,5 @@
 import pandas as pd
-
+from summarizer import summarize
 # Load AbuseIPDB data
 abuse_df = pd.read_csv("abuseipdb_data.csv")
 
@@ -73,6 +73,6 @@ final_df["special_char_count"] = final_df["indicator"].str.count(r'[^a-zA-Z0-9]'
 print("\nFinal with Features:")
 print(final_df.head())
 
-
+final_df = summarize(final_df)
 # Save AFTER feature engineering
 final_df.to_csv("final_dataset.csv", index=False)
